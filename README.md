@@ -1,6 +1,6 @@
 # project
 
 ## Team Name
-* Debaraj Barua
+* Debaraj Barua - debaraj-barua
 * Marc Vinci - kerikon
 * Ramit Sharma
