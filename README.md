@@ -2,5 +2,5 @@
 
 ## Team Name
 * Debaraj Barua
-* Marc Vinci
+* Marc Vinci - kerikon
 * Ramit Sharma
