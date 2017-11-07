@@ -1,5 +1,5 @@
 # project
 
 ## Team Name
-* Name1 LastName1
+* Debaraj Barua
 * Name2 LastName2
