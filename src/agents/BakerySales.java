@@ -6,6 +6,7 @@ import java.util.Hashtable;
 
 import jade.core.Agent;
 import jade.core.behaviours.CyclicBehaviour;
+import jade.core.behaviours.OneShotBehaviour;
 import jade.domain.DFService;
 import jade.domain.FIPAException;
 import jade.domain.FIPAAgentManagement.DFAgentDescription;
@@ -14,7 +15,7 @@ import jade.lang.acl.ACLMessage;
 import jade.lang.acl.MessageTemplate;
 
 public class BakerySales extends Agent {
-	private Hashtable catalogue;
+	//private Hashtable catalogue;
 	
 	protected void setup() {
 		System.out.println("Hello! Bakery Seller-agent " + getAID().getName() + " is ready.");
@@ -32,7 +33,7 @@ public class BakerySales extends Agent {
 		catch (FIPAException fe) {
 			fe.printStackTrace();
 		}
-			
+		addBehaviour(new OrderHandleServer());	
 	}
 	
 	protected void takeDown() {
@@ -48,18 +49,22 @@ public class BakerySales extends Agent {
 	 */
 	private class OrderHandleServer extends CyclicBehaviour {
 		public void action() {
+			boolean correct_order= false;
 			MessageTemplate mt = MessageTemplate.MatchPerformative(ACLMessage.CFP);
 			ACLMessage msg = myAgent.receive(mt);
 			if (msg != null) {
 				// CFP Message received. Process it
 				String title = msg.getContent();
 				ACLMessage reply = msg.createReply();
-
-				Integer price = (Integer) catalogue.get(title);
-				if (price != null) {
-					// The requested item is available for sale. Reply with the price
-					reply.setPerformative(ACLMessage.PROPOSE);
-					reply.setContent(String.valueOf(price.intValue()));
+				//TODO
+				//Check if the ordered product exists.
+				
+				correct_order=true;
+				
+				if (correct_order) {
+					
+					reply.setPerformative(ACLMessage.ACCEPT_PROPOSAL);
+					
 				}
 				else {
 					// The requested item is NOT available for sale.
@@ -74,5 +79,11 @@ public class BakerySales extends Agent {
 		}
 	}  // End of inner class OfferRequestsServer
 	
+	private class readOrders extends OneShotBehaviour {
+		
+		public void action() {
+			
+		}
+	}
 
 }
