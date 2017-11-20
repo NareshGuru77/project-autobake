@@ -1,4 +1,5 @@
-package maas;
+package maas.models;
+
 
 public class Meta {
 	

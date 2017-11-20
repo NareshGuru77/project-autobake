@@ -13,9 +13,9 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.stream.JsonReader;
 
-import maas.Order;
-import maas.Meta;
-import maas.StreetNetwork;
+import maas.models.Meta;
+import maas.models.Order;
+import maas.models.StreetNetwork;
 
 public class Reader extends Agent {
 	

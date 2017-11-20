@@ -6,8 +6,8 @@ import jade.core.behaviours.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import maas.Order;
-import maas.Location;
+import maas.models.Location;
+import maas.models.Order;
 
 @SuppressWarnings("serial")
 public class Customer extends Agent {
