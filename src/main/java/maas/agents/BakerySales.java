@@ -1,5 +1,5 @@
+package maas.agents;
 
-package agents;
 //Class for accepting orders and sending orders to factory
 
 import java.util.Hashtable;
