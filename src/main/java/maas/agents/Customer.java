@@ -32,4 +32,9 @@ public class Customer extends Agent {
 
 		}
 	}
+
+	public String getGuid() {
+		return guid;
+	}
+	
 }

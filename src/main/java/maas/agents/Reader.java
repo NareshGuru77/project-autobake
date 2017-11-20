@@ -70,7 +70,7 @@ public class Reader extends Agent {
 					break;
 				}
 			}
-			
+			System.out.printf("1st Customer guid is: "+customers[0].getGuid()+"\n");
 			System.out.println("Successfully read json file!");
 			
 			reader.close();

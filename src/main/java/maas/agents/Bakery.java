@@ -27,7 +27,7 @@ public class Bakery extends Agent {
 	List<KneadingMachine> kneadingMachnines;
 	
 	protected void setup() {
-		System.out.println("Hello! Bakery Seller-agent " + getAID().getName() + " is ready.");
+		System.out.println("Hello! Bakery-agent " + getAID().getName() + " is ready.");
 		
 		// Register the bakery-selling service in the yellow pages
 		DFAgentDescription dfd = new DFAgentDescription();
@@ -46,18 +46,16 @@ public class Bakery extends Agent {
 	}
 	
 	protected void takeDown() {
-		System.out.println("Bakery Seller-agent " + getAID().getName() + " terminated.");
+		System.out.println("Bakery-agent " + getAID().getName() + " terminated.");
 	}
-	/**
-	   Inner class OfferRequestsServer.
-	   This is the behaviour used by Bakery-seller agents to serve incoming requests 
-	   for offer from customer agents.
-	   If the requested item is in the local catalogue the seller agent replies 
-	   with a PROPOSE message specifying the price. Otherwise a REFUSE message is
-	   sent back.
-	 */
-	/*private class OrderHandleServer extends CyclicBehaviour {
+	
+	protected void make_plan(){
+		
+	}
+
+	private class OrderHandleServer extends CyclicBehaviour {
 		public void action() {
+			/*
 			MessageTemplate mt = MessageTemplate.MatchPerformative(ACLMessage.CFP);
 			ACLMessage msg = myAgent.receive(mt);
 			if (msg != null) {
@@ -81,7 +79,28 @@ public class Bakery extends Agent {
 			else {
 				block();
 			}
+			*/
 		}
-	}  // End of inner class OfferRequestsServer*/
+	}
+	
+	private class sendtoKnead extends CyclicBehaviour{
+		public void action() {
+			
+		}
+	
+	private class sendtoOven extends CyclicBehaviour{
+			public void action() {
+				
+			}
+			
+		}
+	private class sendtoDelivery extends CyclicBehaviour{
+		public void action() {
+			
+		}
+		
+	}
+		
+	}
 
 }
