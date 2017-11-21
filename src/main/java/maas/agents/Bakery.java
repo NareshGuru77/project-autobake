@@ -26,6 +26,10 @@ public class Bakery extends Agent {
 	List<Truck> trucks;
 	List<KneadingMachine> kneadingMachnines;
 	
+	public String getBakeryName() {
+		return name;
+	}
+	
 	protected void setup() {
 		System.out.println("Hello! Bakery-agent " + getAID().getName() + " is ready.");
 		

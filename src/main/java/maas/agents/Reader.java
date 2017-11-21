@@ -17,7 +17,7 @@ import maas.models.Meta;
 import maas.models.Order;
 import maas.models.StreetNetwork;
 
-public class Reader extends Agent {
+public class Reader {
 	
 	Meta meta;
 	Bakery[] bakeries;
@@ -25,17 +25,27 @@ public class Reader extends Agent {
 	Order[] orders;
 	StreetNetwork[] street_network;
 
-	protected void setup() {
-		System.out.println("Hello! Reader-agent " + getAID().getName() + " is ready.");
-
-		readJsonFile("src/main/config/sample-scenario.json");
+	public Meta getMeta() {
+		return meta;
 	}
 	
-	protected void takeDown() {
-		System.out.println("Reader-agent " + getAID().getName() + " terminated.");
+	public Bakery[] getBakeries() {
+		return bakeries;
 	}
 	
-	protected void readJsonFile(String path) {
+	public Customer[] getCustomers() {
+		return customers;
+	}
+	
+	public Order[] getOrders() {
+		return orders;
+	}
+	
+	public StreetNetwork[] getStreetNetwork() {
+		return street_network;
+	}
+	
+	public void readJsonFile(String path) {
 		try {
 			InputStream stream = new FileInputStream(path);
 			
