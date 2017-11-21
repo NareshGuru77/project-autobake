@@ -4,6 +4,7 @@ public class OrderInformation {
 	
 	String total;
 	String avg_per_day;
+	
 	public String getTotal() {
 		return total;
 	}
