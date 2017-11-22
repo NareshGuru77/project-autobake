@@ -37,4 +37,12 @@ public class Customer extends Agent {
 		return guid;
 	}
 	
+	public String getCustomerName() {
+		return name;
+	}
+	
+	public void setOrders(List<Order> orders) {
+		this.orders = orders;
+	}
+	
 }

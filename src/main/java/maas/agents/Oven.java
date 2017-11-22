@@ -8,6 +8,10 @@ public class Oven extends Agent {
 	String guid;
 	int cooling_rate;
 	int heating_rate;
+	
+	public String getGuid() {
+		return guid;
+	}
 
 	protected void setup() {
 		System.out.println("Hello! Oven-agent " + getAID().getName() + " is ready.");
