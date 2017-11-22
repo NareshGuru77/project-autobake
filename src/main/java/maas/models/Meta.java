@@ -3,10 +3,12 @@ package maas.models;
 
 public class Meta {
 	
-	OrderInformation orders;
+	int bakeries;
+	int trucks;
+	int products;
+	int orders;
 	CustomerInformation customers;
-	String total_bakeries;
-	String duration_days;
+	int duration_days;
 	/*	
 	public Meta(OrderInformation orders, CustomerInformation customers, String total_bakeries, String duration_days) {
 		super();
@@ -15,16 +17,16 @@ public class Meta {
 		this.total_bakeries = total_bakeries;
 		this.duration_days = duration_days;
 	}*/
-	public OrderInformation getOrders() {
+	public int getOrders() {
 		return orders;
 	}
 	public CustomerInformation getCustomers() {
 		return customers;
 	}
-	public String getTotal_bakeries() {
-		return total_bakeries;
+	public int getTotal_bakeries() {
+		return bakeries;
 	}
-	public String getDuration_days() {
+	public int getDuration_days() {
 		return duration_days;
 	}
 	

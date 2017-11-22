@@ -20,7 +20,7 @@ public class Start {
     	
     	Reader b = new Reader();
     	
-    	b.readJsonFile("src/main/config/sample-scenario.json");
+    	b.readJsonFile("src/main/config/random-scenario.json");
     	
     	try {
 			container.acceptNewAgent(b.getBakeries()[0].getBakeryName(), b.getBakeries()[0]).start();
