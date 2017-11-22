@@ -3,8 +3,24 @@ package maas.agents;
 import jade.core.Agent;
 import jade.core.behaviours.CyclicBehaviour;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Delivery extends Agent {
-	String guid;
+	
+	List<String> truckGuids;
+	
+	public Delivery() {
+		truckGuids = new ArrayList<String>();
+	}
+	
+	public Delivery(List<String> guids) {
+		truckGuids = guids;
+	}
+	
+	public boolean addGuid(String guid) {
+		return truckGuids.add(guid);
+	}
 	
 	protected void setup() {
 		System.out.println("Hello! Delivery-agent " + getAID().getName() + " is ready.");

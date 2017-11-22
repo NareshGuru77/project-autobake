@@ -1,7 +1,4 @@
-package maas.agents;
-
-import jade.core.Agent;
-import jade.core.behaviours.*;
+package maas.models;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -13,9 +10,8 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.stream.JsonReader;
 
-import maas.models.Meta;
-import maas.models.Order;
-import maas.models.StreetNetwork;
+import maas.agents.Bakery;
+import maas.agents.Customer;
 
 public class Reader {
 	

@@ -11,6 +11,10 @@ public class Truck extends Agent {
 	int load_capacity;
 	Location location;
 	
+	public String getGuid() {
+		return guid;
+	}
+	
 	//TODO: Check return type
 	protected StreetNetwork path_plan(){
 		

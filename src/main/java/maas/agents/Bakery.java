@@ -30,6 +30,30 @@ public class Bakery extends Agent {
 		return name;
 	}
 	
+	public String getGuid() {
+		return guid;
+	}
+	
+	public List<Oven> getOvens() {
+		return ovens;
+	}
+	
+	public List<KneadingMachine> getKneadingMachines() {
+		return kneadingMachnines;
+	}
+	
+	public List<Truck> getTrucks() {
+		return trucks;
+	}
+	
+	public List<Product> getProducts() {
+		return products;
+	}
+	
+	public int getNumberOfKneadingMachines() {
+		return kneading_machines;
+	}
+	
 	protected void setup() {
 		System.out.println("Hello! Bakery-agent " + getAID().getName() + " is ready.");
 		

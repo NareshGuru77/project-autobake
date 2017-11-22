@@ -4,8 +4,17 @@ import jade.core.Agent;
 import jade.core.behaviours.CyclicBehaviour;
 
 public class KneadingMachine extends Agent{
+	
 	String guid;
-	int kneadingTime;
+	
+	public KneadingMachine(String guid) {
+		this.guid = guid;
+	}
+	
+	public String getGuid() {
+		return guid;
+	}
+	
 	protected void setup() {
 		System.out.println("Hello! KneadingMachine-agent " + getAID().getName() + " is ready.");
 		
