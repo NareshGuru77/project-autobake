@@ -8,6 +8,8 @@ import java.util.List;
 
 import maas.models.Location;
 import maas.models.Order;
+import maas.models.Product;
+import maas.models.ProductsToOrder;
 
 @SuppressWarnings("serial")
 public class Customer extends Agent {
@@ -21,6 +23,8 @@ public class Customer extends Agent {
 
 	protected void setup() {
 		System.out.println("Hello! Customer-agent " + getAID().getName() + " is ready.");
+		//System.out.println("Customer guid: "+guid+ "; Customer location is: ("+location.getX()+","+location.getY()+")");
+		 addBehaviour(new orderProducts());
 	}
 
 	protected void takeDown() {
@@ -29,7 +33,20 @@ public class Customer extends Agent {
 
 	private class orderProducts extends OneShotBehaviour {
 		public void action() {
-
+			System.out.println("\nNumber of orders from customer"+ getAID().getName() +" is: "+orders.size());
+			for (Order order :orders){
+				System.out.println("\nOrder id:"+order.getGuid());
+				System.out.println("\nOrder Date:"+order.getOrderDate().toString()+"; "
+						+ "Delivery Date: "+order.getDeliveryDate().toString());
+				System.out.println("\nOrder details: \n"
+						+ "-----------------------------------");
+				int count=0;
+				for (ProductsToOrder productsToOrder:order.getProducts()){
+					count++;
+					System.out.println("\n"+count+") Item:"+productsToOrder.getProductid()+
+							"; Quantity: "+productsToOrder.getQuantity());					
+				}
+			}
 		}
 	}
 
