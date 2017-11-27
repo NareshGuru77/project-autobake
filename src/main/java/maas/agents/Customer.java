@@ -39,7 +39,8 @@ public class Customer extends Agent {
 		Order new_order;
 		public orderProducts(Order order) {
 			Date check_date=new Date();
-			new_order=new Order("guid_check", "customerId_check", check_date,check_date);
+			ArrayList <ProductsToOrder> check_products = null;
+			new_order=new Order("guid_check", "customerId_check", check_date,check_date,check_products);
 		}
 
 		public void action() {

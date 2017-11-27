@@ -37,8 +37,8 @@ public class Order {
 	}
 	
 	public List <ProductsToOrder> getProducts() {
-		return products;
-		
+		//return products;
+		return null;
 	}
 
 }
