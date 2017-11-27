@@ -1,4 +1,4 @@
-package maas.unittest;
+package maas;
 
 import static org.junit.Assert.*;
 
@@ -17,6 +17,7 @@ public class CustomerInformationTest {
 	
 	@Test
 	public void testGetTotal_type1() {
+		System.out.println("testing");
 		assertEquals(total_type1, actual_customer.getTotal_type1());		
 	}
 
@@ -31,3 +32,4 @@ public class CustomerInformationTest {
 	}
 
 }
+
