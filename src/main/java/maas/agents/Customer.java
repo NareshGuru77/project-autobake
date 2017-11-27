@@ -37,6 +37,8 @@ public class Customer extends Agent {
 
 	private class orderProducts extends OneShotBehaviour {
 		Order new_order;
+		
+		//TODO: Remove Constructor and send orders one by one
 		public orderProducts(Order order) {
 			Date check_date=new Date();
 			ArrayList <ProductsToOrder> check_products = null;
