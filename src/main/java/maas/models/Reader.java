@@ -6,13 +6,10 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
-
-import org.json.JSONObject;
-
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.stream.JsonReader;
-
+import com.google.gson.stream.JsonToken;
 import maas.agents.Bakery;
 import maas.agents.Customer;
 import maas.models.ProductsToOrder;
@@ -53,8 +50,7 @@ public class Reader {
 
 			reader.beginObject();
 
-			while(reader.hasNext())
-			{
+			while (reader.hasNext()) {
 				String name = reader.nextName();
 
 				switch (name) {
@@ -68,8 +64,7 @@ public class Reader {
 					customers = gson.fromJson(reader, Customer[].class);
 					break;
 				case "orders":
-					//TODO: iterate over all orders and call parseJsonOrders
-					orders = gson.fromJson(reader, Order[].class);
+					parseOrders(gson, reader);
 					break;
 				case "street_network":
 					street_network = gson.fromJson(reader, StreetNetwork[].class);
@@ -79,52 +74,67 @@ public class Reader {
 					break;
 				}
 			}
-			System.out.printf("1st Customer guid is: "+customers[0].getGuid()+"\n");
+			System.out.printf("1st Customer guid is: " + customers[0].getGuid() + "\n");
 			System.out.println("Successfully read json file!");
 
 			reader.close();
-		} catch(UnsupportedEncodingException e) {
+		} catch (UnsupportedEncodingException e) {
 			System.out.println("Not supported encoding: " + e.getMessage());
-		} catch(IOException e) {
+		} catch (IOException e) {
 			System.out.println("Not able to close reader: " + e.getMessage());
 		}
 	}
-	
-	Order parseJsonOrders(String jsonOrder){
-		Order parsedOrder;
-		String guid, customerId;
-		Date orderDate, deliveryDate;
-		ArrayList <ProductsToOrder> product_list=new ArrayList<ProductsToOrder>();;
-		String productid;
-		int quantity;
 
-		try{
-			JSONObject order = new JSONObject(jsonOrder);
-			guid=order.getJSONObject("guid").getString("guid");
-			customerId=order.getJSONObject("customerId").getString("customerId");
-			int day=order.getJSONObject("orderDate").getInt("day");
-			int hour=order.getJSONObject("orderDate").getInt("hour");
-			orderDate = new Date(day, hour);
-			day=order.getJSONObject("deliveryDate").getInt("day");
-			hour=order.getJSONObject("deliveryDate").getInt("hour");
-			deliveryDate = new Date(day, hour);
-			
-			JSONObject products = order.getJSONObject("products");
-			int numOfProducts = JSONObject.getNames(products).length;
-			for(int i=0;i<numOfProducts;i++)
-			{
-				productid= JSONObject.getNames(products)[i];
-				quantity= products.getInt(productid);
-				ProductsToOrder product=new ProductsToOrder(productid, quantity);
-				product_list.add(product);
+	private void parseOrders(Gson gson, JsonReader reader) {
+		Order[] orders = new Order[meta.orders];
+
+		try {
+			reader.beginArray();
+
+			for (int i = 0; i < meta.orders; ++i) {
+				reader.beginObject();
+				
+				reader.nextName();
+				
+				Date order_date = gson.fromJson(reader, Date.class);
+				
+				reader.nextName();
+				
+				String customer_id = gson.fromJson(reader, String.class);
+				
+				reader.nextName();
+				
+				reader.beginObject();
+				
+				ArrayList<ProductsToOrder> list = new ArrayList<ProductsToOrder>();
+				
+				while(reader.peek() != JsonToken.END_OBJECT) {
+					String product_name = reader.nextName();
+					int quantity = reader.nextInt();
+					ProductsToOrder productsToOrder = new ProductsToOrder(product_name, quantity);
+					list.add(productsToOrder);
+				}
+				
+				reader.endObject();
+				
+				reader.nextName();
+				
+				String guid = gson.fromJson(reader, String.class);
+				
+				reader.nextName();
+				
+				Date delivery_date = gson.fromJson(reader, Date.class);
+				
+				orders[i] = new Order(guid, customer_id, order_date, delivery_date, list);
+				
+				reader.endObject();
 			}
-			parsedOrder=new Order(guid, customerId, orderDate, deliveryDate,product_list);
-			return parsedOrder;
 			
-		}catch (Exception e) {
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		return null;
-		
+
+		this.orders = orders;
+
 	}
 }

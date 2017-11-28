@@ -1,6 +1,6 @@
 package maas.models;
 
-import java.util.*;
+import java.util.List;
 
 
 public class Order {
@@ -9,15 +9,14 @@ public class Order {
 	String customer_id;
 	Date order_date;
 	Date delivery_date;
-	ArrayList <ProductsToOrder> productss;
+	List<ProductsToOrder> products;
 	
-	public Order(String guid, String customerId, Date orderDate, Date deliveryDate
-			, ArrayList <ProductsToOrder> products) {
+	public Order(String guid, String customerId, Date orderDate, Date deliveryDate, List<ProductsToOrder> products) {
 		this.guid = guid;
 		this.customer_id = customerId;
 		this.order_date = orderDate;
 		this.delivery_date = deliveryDate;
-		this.productss = products;
+		this.products = products;
 	}
 	
 	public String getGuid() {
@@ -36,17 +35,16 @@ public class Order {
 		return delivery_date;
 	}
 	
-	public List <ProductsToOrder> getProducts() {
-		//return products;
-		return null;
-	}
 	
 	public String toString() {
 		String string = "";
-		for(ProductsToOrder product :productss) {
+		for(ProductsToOrder product :products) {
 			string += product.toString() + " ";
 		}
 		return string;
+	}
+	public List<ProductsToOrder> getProducts() {
+		return products;
 	}
 
 }
