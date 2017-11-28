@@ -9,7 +9,7 @@ public class Order {
 	String customer_id;
 	Date order_date;
 	Date delivery_date;
-	ArrayList <ProductsToOrder> products;
+	ArrayList <ProductsToOrder> productss;
 	
 	public Order(String guid, String customerId, Date orderDate, Date deliveryDate
 			, ArrayList <ProductsToOrder> products) {
@@ -17,7 +17,7 @@ public class Order {
 		this.customer_id = customerId;
 		this.order_date = orderDate;
 		this.delivery_date = deliveryDate;
-		this.products = products;
+		this.productss = products;
 	}
 	
 	public String getGuid() {
@@ -39,6 +39,14 @@ public class Order {
 	public List <ProductsToOrder> getProducts() {
 		//return products;
 		return null;
+	}
+	
+	public String toString() {
+		String string = "";
+		for(ProductsToOrder product :productss) {
+			string += product.toString() + " ";
+		}
+		return string;
 	}
 
 }
