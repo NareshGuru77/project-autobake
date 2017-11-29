@@ -8,6 +8,8 @@ os: linux
 addons:
   sonarcloud:
     organization: "autobake"
+    branches:
+      - ".*"
     token:
       secure: WF1RZM+68RVY8NL2bE8lQhmSGOTf8hG8PDzp6hEavWUnDgaObN0dezoHNX1g0nRK1VFU50q7yr1p5CNZUtGsz0bjvxs1pxo1Qr5ublBLjGLx0pBTx6H/j3ooirgq7rh2s6ZdofjcZkQTXbHPy0rvCkEQ6fvmIsyVNh6ZYTSPxIWI0G8xV7FruxDZE/OnHwDEzP5vRf/tVORuaLhYmCAISF3lRh3m6Cwbt3FyXRVqcvy8mFT6IMGBeC68IcmWDIgYF5aZNviK4lrs7WVT+hVhfOR0puI+1Q+hGUS/m8SYSO+DgtyZ9qCnms+3qILp/njRXjDfVneAOXX8ectVEBWAi7u+BRwrNnGgXVUtrOhHIqG5pKpQzPAVMCK2QoASwzSIl1SR1UCItSjbq7HeDN0+MDUqUcuDddZeXm3wW/OQ/NC0cNxQ8l1Rp0jpm9FHBOY0oX15OMYCdXDSwnFDXu8TKNXoG7D6vS9MpjTDKrjZxwTt1bcXxFW5IbRk4ARo0jT7ZcHD7EOHrshLjcL4BlePlc63Oydu2rO8rTG06CUDPiCSJZIourtDFFCac6S4yh72bT6N599vF4AfGk/mhjNlw6NtHKM1hdzCxcyZXVNNuFmbQuMAuKTCrzUzYZ1upDyZ6N9oSAaXRlCFLL8nwqWWUcvz46wVz9Ln7RHOyMMgfAE= # encrypted value of your token
 script:
