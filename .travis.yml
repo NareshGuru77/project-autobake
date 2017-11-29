@@ -1,6 +1,8 @@
 language: java
 jdk:
     - openjdk8
+sudo: false
+install: true
 group: stable
 dist: trusty
 os: linux
