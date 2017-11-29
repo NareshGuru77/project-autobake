@@ -1,5 +1,6 @@
 # project-autobake
-[![Build Status](https://travis-ci.org/HBRS-MAAS/project-autobake.svg?branch=development)](https://travis-ci.org/HBRS-MAAS/project-autobake)
+[![Build Status](https://travis-ci.org/HBRS-MAAS/project-autobake.svg?branch=develop)](https://travis-ci.org/HBRS-MAAS/project-autobake)
+[![Quality Gate](https://sonarcloud.io/api/badges/gate?key=project-autobake)](https://sonarcloud.io/dashboard?id=project-autobake)
 ## Team Name
 * Debaraj Barua - [@debaraj-barua](https://github.com/debaraj-barua)
 * Marc Vinci - [@kerikon](https://github.com/kerikon)

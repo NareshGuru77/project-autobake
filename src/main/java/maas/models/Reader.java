@@ -12,6 +12,9 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonToken;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import maas.agents.Bakery;
 import maas.agents.Customer;
 
@@ -44,10 +47,14 @@ public class Reader {
 	}
 
 	public void readJsonFile(String path) {
+		InputStream stream = null;
+		
+		JsonReader reader = null;
+		
 		try {
-			InputStream stream = new FileInputStream(path);
+			stream = new FileInputStream(path);
 
-			JsonReader reader = new JsonReader(new InputStreamReader(stream, "UTF-8"));
+			reader = new JsonReader(new InputStreamReader(stream, "UTF-8"));
 
 			Gson gson = new GsonBuilder().create();
 
@@ -77,14 +84,21 @@ public class Reader {
 					break;
 				}
 			}
-			System.out.printf("1st Customer guid is: " + customers[0].getGuid() + "\n");
 			System.out.println("Successfully read json file!");
-
-			reader.close();
 		} catch (UnsupportedEncodingException e) {
-			System.out.println("Not supported encoding: " + e.getMessage());
+			Logger log = LogManager.getLogger(Reader.class);
+			log.error("Unsupported Encoding for Json file", e);
 		} catch (IOException e) {
-			System.out.println("Not able to close reader: " + e.getMessage());
+			Logger log = LogManager.getLogger(Reader.class);
+			log.error("Error in reading Json File", e);
+		} finally {
+			try {
+				reader.close();
+				stream.close();
+			} catch (IOException e) {
+				Logger log = LogManager.getLogger(Reader.class);
+				log.error("Error in closing Json File", e);
+			}
 		}
 	}
 
@@ -134,7 +148,8 @@ public class Reader {
 			}
 			
 		} catch (IOException e) {
-			e.printStackTrace();
+			Logger log = LogManager.getLogger(Reader.class);
+			log.error("Error in processing orders from Json File", e);
 		}
 
 		this.orders = orders;
