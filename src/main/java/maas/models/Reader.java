@@ -17,7 +17,6 @@ import org.apache.logging.log4j.Logger;
 
 import maas.agents.Bakery;
 import maas.agents.Customer;
-import maas.agents.KneadingMachineController;
 
 public class Reader {
 
@@ -103,7 +102,7 @@ public class Reader {
 	}
 
 	private void parseOrders(Gson gson, JsonReader reader) {
-		Order[] orders = new Order[meta.getNumberOfOrders()];
+		Order[] createdOrders = new Order[meta.getNumberOfOrders()];
 
 		try {
 			reader.beginArray();
@@ -142,7 +141,7 @@ public class Reader {
 				
 				Date delivery_date = gson.fromJson(reader, Date.class);
 				
-				orders[i] = new Order(guid, customer_id, order_date, delivery_date, list);
+				createdOrders[i] = new Order(guid, customer_id, order_date, delivery_date, list);
 				
 				reader.endObject();
 			}
@@ -152,6 +151,6 @@ public class Reader {
 			log.error("Error in processing orders from Json File", e);
 		}
 
-		this.orders = orders;
+		this.orders = createdOrders;
 	}
 }

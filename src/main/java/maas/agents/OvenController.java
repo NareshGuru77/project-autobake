@@ -15,7 +15,7 @@ public class OvenController extends Agent implements Serializable {
 	private List<String> ovenGuids;
 
 	public OvenController() {
-		ovenGuids = new ArrayList<String>();
+		ovenGuids = new ArrayList<>();
 	}
 
 	public OvenController(List<String> guids) {

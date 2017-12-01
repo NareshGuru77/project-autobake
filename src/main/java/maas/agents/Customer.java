@@ -20,7 +20,7 @@ public class Customer extends Agent {
 	private String type;
 	private Location location;
 
-	private List<Order> orders = new ArrayList<Order>();
+	private List<Order> orders = new ArrayList<>();
 
 	@Override
 	protected void setup() {

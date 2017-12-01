@@ -15,7 +15,7 @@ public class KneadingMachineController extends Agent implements Serializable {
 	private List<String> kneadingMachineGuids;
 
 	public KneadingMachineController() {
-		kneadingMachineGuids = new ArrayList<String>();
+		kneadingMachineGuids = new ArrayList<>();
 	}
 
 	public KneadingMachineController(List<String> guids) {
