@@ -49,15 +49,10 @@ public class Reader {
 	public void readJsonFile(String path) {
 		Logger log = LogManager.getLogger(Reader.class);
 		
-		InputStream stream = null;
-		
-		JsonReader reader = null;
-		
-		try {
-			stream = new FileInputStream(path);
-
-			reader = new JsonReader(new InputStreamReader(stream, "UTF-8"));
-
+		try (
+				InputStream stream = new FileInputStream(path);
+				JsonReader reader = new JsonReader(new InputStreamReader(stream, "UTF-8"));
+				){
 			Gson gson = new GsonBuilder().create();
 
 			reader.beginObject();
@@ -91,13 +86,6 @@ public class Reader {
 			log.error("Unsupported Encoding for Json file", e);
 		} catch (IOException e) {
 			log.error("Error in reading Json File", e);
-		} finally {
-			try {
-				reader.close();
-				stream.close();
-			} catch (IOException e) {
-				log.error("Error in closing Json File", e);
-			}
 		}
 	}
 

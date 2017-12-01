@@ -85,14 +85,14 @@ public class Start {
     			container.acceptNewAgent("Packaging" + i, new Packaging()).start();
     			
     		} catch (StaleProxyException e) {
-    			log.fatal("Wrapper is outdated", e);
+    			log.fatal("Wrapper is outdated when creating Agents of the Bakery", e);
     		}
     	}
     	
     	try {
 			container.acceptNewAgent("BakeryController", bakeryController).start();
 		} catch (StaleProxyException e) {
-			log.fatal("Wrapper is outdated", e);
+			log.fatal("Wrapper is outdated when creating the BakeryController", e);
 		}
     	
     	Customer[] customers = reader.getCustomers();
@@ -120,7 +120,7 @@ public class Start {
     		try {
 				container.acceptNewAgent(customers[i].getCustomerName(), customers[i]).start();
 			} catch (StaleProxyException e) {
-				log.fatal("Wrapper is outdated", e);
+				log.fatal("Wrapper is outdated when creating the Customers", e);
 			}
     	}
     }
