@@ -19,17 +19,19 @@ public class Customer extends Agent {
 
 	List<Order> orders = new ArrayList<Order>();
 
+	@Override
 	protected void setup() {
 		System.out.println("Hello! Customer-agent " + getAID().getName() + " is ready.");
 	}
 
+	@Override
 	protected void takeDown() {
 		System.out.println("Customer-agent " + getAID().getName() + " terminated.");
 	}
 
 	private class orderProducts extends OneShotBehaviour {
 		public void action() {
-
+			throw new UnsupportedOperationException();
 		}
 	}
 

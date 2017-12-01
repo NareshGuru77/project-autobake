@@ -30,11 +30,13 @@ public class Truck extends Agent implements Serializable {
 		throw new UnsupportedOperationException();
 	}
 
+	@Override
 	protected void setup() {
 		System.out.println("Hello! Truck-agent " + getAID().getName() + " is ready.");
 
 	}
 
+	@Override
 	protected void takeDown() {
 		System.out.println("Truck-agent " + getAID().getName() + " terminated.");
 	}

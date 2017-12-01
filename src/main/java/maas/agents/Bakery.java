@@ -56,6 +56,7 @@ public class Bakery extends Agent {
 		return kneading_machines;
 	}
 	
+	@Override
 	protected void setup() {
 		System.out.println("Hello! Bakery-agent " + getAID().getName() + " is ready.");
 		
@@ -76,16 +77,18 @@ public class Bakery extends Agent {
 			
 	}
 	
+	@Override
 	protected void takeDown() {
 		System.out.println("Bakery-agent " + getAID().getName() + " terminated.");
 	}
 	
 	protected void make_plan(){
-		
+		throw new UnsupportedOperationException();
 	}
 
 	private class OrderHandleServer extends CyclicBehaviour {
 		public void action() {
+			throw new UnsupportedOperationException();
 			/*
 			MessageTemplate mt = MessageTemplate.MatchPerformative(ACLMessage.CFP);
 			ACLMessage msg = myAgent.receive(mt);
@@ -116,18 +119,18 @@ public class Bakery extends Agent {
 	
 	private class sendtoKnead extends CyclicBehaviour{
 		public void action() {
-			
+			throw new UnsupportedOperationException();
 		}
 	
 	private class sendtoOven extends CyclicBehaviour{
 			public void action() {
-				
+				throw new UnsupportedOperationException();
 			}
 			
 		}
 	private class sendtoDelivery extends CyclicBehaviour{
 		public void action() {
-			
+			throw new UnsupportedOperationException();
 		}
 		
 	}

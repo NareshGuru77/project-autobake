@@ -18,11 +18,13 @@ public class KneadingMachine extends Agent implements Serializable {
 		return guid;
 	}
 
+	@Override
 	protected void setup() {
 		System.out.println("Hello! KneadingMachine-agent " + getAID().getName() + " is ready.");
 
 	}
 
+	@Override
 	protected void takeDown() {
 		System.out.println("KneadingMachine-agent " + getAID().getName() + " terminated.");
 	}

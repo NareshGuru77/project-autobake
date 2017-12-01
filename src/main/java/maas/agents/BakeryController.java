@@ -21,10 +21,13 @@ public class BakeryController extends Agent {
 		return bakeryGuids.add(guid);
 	}
 	
+	@Override
 	protected void setup() {
 		System.out.println("Hello! BakeryController-agent " + getAID().getName() + " is ready.");
 		
 	}
+	
+	@Override
 	protected void takeDown() {
 		System.out.println("BakeryController-agent " + getAID().getName() + " terminated.");
 	}
