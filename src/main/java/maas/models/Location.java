@@ -1,7 +1,10 @@
 package maas.models;
 
-public class Location {
+import java.io.Serializable;
+
+public class Location implements Serializable{
 	
+	private static final long serialVersionUID = 751972746311485117L;
 	int x;
 	int y;
 	

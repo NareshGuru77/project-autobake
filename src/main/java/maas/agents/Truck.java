@@ -2,42 +2,49 @@ package maas.agents;
 
 import maas.models.Location;
 import maas.models.StreetNetwork;
+
+import java.io.Serializable;
+
 import jade.core.Agent;
 import jade.core.behaviours.*;
 
-public class Truck extends Agent {
+public class Truck extends Agent implements Serializable {
 
+	private static final long serialVersionUID = -888212390337704863L;
 	String guid;
 	int load_capacity;
 	Location location;
-	
+
 	public String getGuid() {
 		return guid;
 	}
-	
-	//TODO: Check return type
-	protected StreetNetwork path_plan(){
-		
-		return null;		
+
+	// TODO: Implementation
+	protected StreetNetwork path_plan() {
+
+		throw new UnsupportedOperationException();
 	}
-	
-	protected void follow_path(){
-		
+
+	// TODO: Implementation
+	protected void follow_path() {
+		throw new UnsupportedOperationException();
 	}
-	
+
 	protected void setup() {
 		System.out.println("Hello! Truck-agent " + getAID().getName() + " is ready.");
-		
+
 	}
+
 	protected void takeDown() {
 		System.out.println("Truck-agent " + getAID().getName() + " terminated.");
 	}
-	
-	private class truckHandleServer extends CyclicBehaviour{
+
+	// TODO: Implementation
+	private class truckHandleServer extends CyclicBehaviour {
 		public void action() {
-			
+			throw new UnsupportedOperationException();
 		}
-		
+
 	}
-	
+
 }
