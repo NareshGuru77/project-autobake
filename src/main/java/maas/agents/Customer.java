@@ -15,12 +15,12 @@ import maas.models.Order;
 @SuppressWarnings("serial")
 public class Customer extends Agent {
 	
-	String guid;
-	String name;
-	String type;
-	Location location;
+	private String guid;
+	private String name;
+	private String type;
+	private Location location;
 
-	List<Order> orders = new ArrayList<Order>();
+	private List<Order> orders = new ArrayList<Order>();
 
 	@Override
 	protected void setup() {
@@ -48,6 +48,18 @@ public class Customer extends Agent {
 		return name;
 	}
 	
+	public String getType() {
+		return type;
+	}
+
+	public Location getLocation() {
+		return location;
+	}
+
+	public List<Order> getOrders() {
+		return orders;
+	}
+
 	public void setOrders(List<Order> orders) {
 		this.orders = orders;
 	}

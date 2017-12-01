@@ -14,12 +14,20 @@ import jade.core.behaviours.*;
 @SuppressWarnings("serial")
 public class Truck extends Agent implements Serializable {
 
-	String guid;
-	int load_capacity;
-	Location location;
+	private String guid;
+	private int load_capacity;
+	private Location location;
 
 	public String getGuid() {
 		return guid;
+	}
+
+	public int getLoad_capacity() {
+		return load_capacity;
+	}
+
+	public Location getLocation() {
+		return location;
 	}
 
 	// TODO: Implementation

@@ -13,7 +13,7 @@ import org.apache.logging.log4j.Logger;
 @SuppressWarnings("serial")
 public class Delivery extends Agent implements Serializable{
 
-	List<String> truckGuids;
+	private List<String> truckGuids;
 
 	public Delivery() {
 		truckGuids = new ArrayList<>();

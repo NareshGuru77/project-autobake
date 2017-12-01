@@ -21,11 +21,11 @@ import maas.agents.KneadingMachineController;
 
 public class Reader {
 
-	Meta meta;
-	Bakery[] bakeries;
-	Customer[] customers;
-	Order[] orders;
-	StreetNetwork[] street_network;
+	private Meta meta;
+	private Bakery[] bakeries;
+	private Customer[] customers;
+	private Order[] orders;
+	private StreetNetwork[] street_network;
 
 	public Meta getMeta() {
 		return meta;
@@ -103,12 +103,12 @@ public class Reader {
 	}
 
 	private void parseOrders(Gson gson, JsonReader reader) {
-		Order[] orders = new Order[meta.orders];
+		Order[] orders = new Order[meta.getNumberOfOrders()];
 
 		try {
 			reader.beginArray();
 
-			for (int i = 0; i < meta.orders; ++i) {
+			for (int i = 0; i < meta.getNumberOfOrders(); ++i) {
 				reader.beginObject();
 				
 				reader.nextName();

@@ -12,7 +12,7 @@ import org.apache.logging.log4j.Logger;
 @SuppressWarnings("serial")
 public class KneadingMachineController extends Agent implements Serializable {
 
-	List<String> kneadingMachineGuids;
+	private List<String> kneadingMachineGuids;
 
 	public KneadingMachineController() {
 		kneadingMachineGuids = new ArrayList<String>();

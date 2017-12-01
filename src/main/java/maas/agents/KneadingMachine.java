@@ -11,7 +11,7 @@ import jade.core.behaviours.CyclicBehaviour;
 @SuppressWarnings("serial")
 public class KneadingMachine extends Agent implements Serializable {
 
-	String guid;
+	private String guid;
 
 	public KneadingMachine(String guid) {
 		this.guid = guid;

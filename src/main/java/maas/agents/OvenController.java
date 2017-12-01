@@ -12,7 +12,7 @@ import jade.core.Agent;
 @SuppressWarnings("serial")
 public class OvenController extends Agent implements Serializable {
 
-	List<String> ovenGuids;
+	private List<String> ovenGuids;
 
 	public OvenController() {
 		ovenGuids = new ArrayList<String>();

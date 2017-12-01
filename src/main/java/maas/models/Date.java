@@ -5,8 +5,8 @@ import java.io.Serializable;
 @SuppressWarnings("serial")
 public class Date implements Serializable {
 
-	int day;
-	int hour;
+	private int day;
+	private int hour;
 
 	public int getDay() {
 		return day;

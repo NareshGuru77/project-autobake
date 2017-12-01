@@ -2,9 +2,9 @@ package maas.models;
 
 public class CustomerInformation {
 
-	int total_type1;
-	int total_type2;
-	int total_type3;
+	private int total_type1;
+	private int total_type2;
+	private int total_type3;
 
 	public int getTotal_type1() {
 		return total_type1;

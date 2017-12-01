@@ -12,7 +12,7 @@ import org.apache.logging.log4j.Logger;
 @SuppressWarnings("serial")
 public class BakeryController extends Agent implements Serializable{
 
-	List<String> bakeryGuids;
+	private List<String> bakeryGuids;
 	
 	public BakeryController() {
 		bakeryGuids = new ArrayList<>();

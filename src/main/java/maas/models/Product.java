@@ -5,18 +5,18 @@ import java.io.Serializable;
 @SuppressWarnings("serial")
 public class Product implements Serializable {
 
-	String id;
-	int dough_prep_time;
-	int resting_time;
-	int item_prep_time;
-	int breads_per_oven;
-	int baking_time;
-	int baking_temp;
-	int cooling_rate;
-	int boxing_temp;
-	int breads_per_box;
-	int production_cost;
-	int sales_price;
+	private String id;
+	private int dough_prep_time;
+	private int resting_time;
+	private int item_prep_time;
+	private int breads_per_oven;
+	private int baking_time;
+	private int baking_temp;
+	private int cooling_rate;
+	private int boxing_temp;
+	private int breads_per_box;
+	private int production_cost;
+	private int sales_price;
 
 	public String getId() {
 		return id;

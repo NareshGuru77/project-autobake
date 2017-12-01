@@ -11,12 +11,20 @@ import jade.core.behaviours.*;
 @SuppressWarnings("serial")
 public class Oven extends Agent implements Serializable {
 
-	String guid;
-	int cooling_rate;
-	int heating_rate;
+	private String guid;
+	private int cooling_rate;
+	private int heating_rate;
 
 	public String getGuid() {
 		return guid;
+	}
+
+	public int getCooling_rate() {
+		return cooling_rate;
+	}
+
+	public int getHeating_rate() {
+		return heating_rate;
 	}
 
 	@Override

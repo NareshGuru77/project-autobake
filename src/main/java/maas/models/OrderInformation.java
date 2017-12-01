@@ -2,8 +2,8 @@ package maas.models;
 
 public class OrderInformation {
 	
-	String total;
-	String avg_per_day;
+	private String total;
+	private String avg_per_day;
 	
 	public String getTotal() {
 		return total;

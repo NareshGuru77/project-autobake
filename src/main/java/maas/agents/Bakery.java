@@ -20,15 +20,23 @@ import org.apache.logging.log4j.Logger;
 @SuppressWarnings("serial")
 public class Bakery extends Agent implements Serializable {
 
-	String guid;
-	String name;
-	Location location;
-	int kneading_machines;
-	int dough_prep_tables;
-	List<Oven> ovens;
-	List<Product> products;
-	List<Truck> trucks;
-	List<KneadingMachine> kneadingMachnines;
+	private String guid;
+	private String name;
+	private Location location;
+	private int kneading_machines;
+	private int dough_prep_tables;
+	private List<Oven> ovens;
+	private List<Product> products;
+	private List<Truck> trucks;
+	private List<KneadingMachine> kneadingMachines;
+
+	public Location getLocation() {
+		return location;
+	}
+
+	public int getDough_prep_tables() {
+		return dough_prep_tables;
+	}
 
 	public String getBakeryName() {
 		return name;
@@ -43,7 +51,7 @@ public class Bakery extends Agent implements Serializable {
 	}
 
 	public List<KneadingMachine> getKneadingMachines() {
-		return kneadingMachnines;
+		return kneadingMachines;
 	}
 
 	public List<Truck> getTrucks() {

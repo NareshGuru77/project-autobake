@@ -6,11 +6,11 @@ import java.util.List;
 @SuppressWarnings("serial")
 public class Order implements Serializable {
 	
-	String guid;
-	String customer_id;
-	Date order_date;
-	Date delivery_date;
-	List<ProductsToOrder> products;
+	private String guid;
+	private String customer_id;
+	private Date order_date;
+	private Date delivery_date;
+	private List<ProductsToOrder> products;
 	
 	public Order(String guid, String customerId, Date orderDate, Date deliveryDate, List<ProductsToOrder> products) {
 		this.guid = guid;
