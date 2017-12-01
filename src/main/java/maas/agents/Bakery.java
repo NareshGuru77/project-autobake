@@ -2,7 +2,6 @@ package maas.agents;
 
 import maas.models.Location;
 import maas.models.Product;
-import maas.models.Reader;
 import jade.core.Agent;
 import jade.core.behaviours.*;
 import jade.domain.DFService;
@@ -71,7 +70,7 @@ public class Bakery extends Agent {
 			DFService.register(this, dfd);
 		}
 		catch (FIPAException fe) {
-			Logger log = LogManager.getLogger(Reader.class);
+			Logger log = LogManager.getLogger(Bakery.class);
 			log.error("Error in setting up bakery agent ", fe);
 		}
 			
