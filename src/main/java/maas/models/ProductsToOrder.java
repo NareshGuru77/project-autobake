@@ -1,14 +1,28 @@
 package maas.models;
 
-public class ProductsToOrder {
+import java.io.Serializable;
+
+@SuppressWarnings("serial")
+public class ProductsToOrder implements Serializable {
 	
-	int bread;
-	int bagel;
-	public int getBread() {
-		return bread;
+	private String productid;
+	private int quantity;
+	
+	public ProductsToOrder(String productid, int quantity) {
+		this.productid = productid;
+		this.quantity = quantity;
 	}
-	public int getBagel() {
-		return bagel;
+
+	public String getProductid() {
+		return productid;
+	}
+
+	public int getQuantity() {
+		return quantity;
+	}
+	
+	public String toString() {
+		return productid + ":" + quantity;
 	}
 
 }

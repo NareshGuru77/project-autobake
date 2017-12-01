@@ -1,32 +1,36 @@
 package maas.models;
 
-
 public class Meta {
-	
-	OrderInformation orders;
-	CustomerInformation customers;
-	String total_bakeries;
-	String duration_days;
-	/*	
-	public Meta(OrderInformation orders, CustomerInformation customers, String total_bakeries, String duration_days) {
-		super();
-		this.orders = orders;
-		this.customers = customers;
-		this.total_bakeries = total_bakeries;
-		this.duration_days = duration_days;
-	}*/
-	public OrderInformation getOrders() {
+
+	private int bakeries;
+	private int trucks;
+	private int products;
+	private int orders;
+	private CustomerInformation customers;
+	private int duration_days;
+
+	public int getNumberOfOrders() {
 		return orders;
 	}
+
 	public CustomerInformation getCustomers() {
 		return customers;
 	}
-	public String getTotal_bakeries() {
-		return total_bakeries;
+
+	public int getNumberOfBakeries() {
+		return bakeries;
 	}
-	public String getDuration_days() {
+
+	public int getDurationDays() {
 		return duration_days;
 	}
-	
+
+	public int getNumberOfTrucks() {
+		return trucks;
+	}
+
+	public int getNumberOfProducts() {
+		return products;
+	}
 
 }

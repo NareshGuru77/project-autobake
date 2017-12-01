@@ -1,6 +1,19 @@
 language: java
 jdk:
-    - openjdk8
+- openjdk8
+sudo: false
+install: true
 group: stable
 dist: trusty
 os: linux
+addons:
+  sonarcloud:
+    organization: autobake
+    branches:
+    - ".*"
+    token:
+      secure: ${SONAR_TOKEN}
+    github_token:
+      secure: ${GITHUB_TOKEN}
+script:
+  - "gradle sonarqube"
