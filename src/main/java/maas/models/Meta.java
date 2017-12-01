@@ -9,6 +9,21 @@ public class Meta {
 	int orders;
 	CustomerInformation customers;
 	int duration_days;
+	
+	public Meta(int bakeries2,int trucks2,
+			int products2,int orders2,
+			CustomerInformation customers2,int duration_days2) {
+		// TODO Auto-generated constructor stub
+		bakeries = bakeries2;
+		trucks = trucks2;
+		products = products2;
+		orders = orders2;
+		customers = customers2;
+		duration_days = duration_days2;
+		
+		
+		
+	}
 	/*	
 	public Meta(OrderInformation orders, CustomerInformation customers, String total_bakeries, String duration_days) {
 		super();
