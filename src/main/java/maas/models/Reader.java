@@ -17,6 +17,7 @@ import org.apache.logging.log4j.Logger;
 
 import maas.agents.Bakery;
 import maas.agents.Customer;
+import maas.agents.KneadingMachineController;
 
 public class Reader {
 
@@ -47,6 +48,8 @@ public class Reader {
 	}
 
 	public void readJsonFile(String path) {
+		Logger log = LogManager.getLogger(Reader.class);
+		
 		InputStream stream = null;
 		
 		JsonReader reader = null;
@@ -84,19 +87,16 @@ public class Reader {
 					break;
 				}
 			}
-			System.out.println("Successfully read json file!");
+			log.info("Successfully read json file!");
 		} catch (UnsupportedEncodingException e) {
-			Logger log = LogManager.getLogger(Reader.class);
 			log.error("Unsupported Encoding for Json file", e);
 		} catch (IOException e) {
-			Logger log = LogManager.getLogger(Reader.class);
 			log.error("Error in reading Json File", e);
 		} finally {
 			try {
 				reader.close();
 				stream.close();
 			} catch (IOException e) {
-				Logger log = LogManager.getLogger(Reader.class);
 				log.error("Error in closing Json File", e);
 			}
 		}

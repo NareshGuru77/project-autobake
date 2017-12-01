@@ -2,12 +2,15 @@ package maas.agents;
 
 import java.io.Serializable;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import jade.core.Agent;
 import jade.core.behaviours.CyclicBehaviour;
 
+@SuppressWarnings("serial")
 public class KneadingMachine extends Agent implements Serializable {
 
-	private static final long serialVersionUID = -2184235363103688526L;
 	String guid;
 
 	public KneadingMachine(String guid) {
@@ -20,13 +23,14 @@ public class KneadingMachine extends Agent implements Serializable {
 
 	@Override
 	protected void setup() {
-		System.out.println("Hello! KneadingMachine-agent " + getAID().getName() + " is ready.");
-
+		Logger log = LogManager.getLogger(KneadingMachine.class);
+		log.info("Hello! KneadingMachine-agent " + getAID().getName() + " is ready.");
 	}
 
 	@Override
 	protected void takeDown() {
-		System.out.println("KneadingMachine-agent " + getAID().getName() + " terminated.");
+		Logger log = LogManager.getLogger(KneadingMachine.class);
+		log.info("KneadingMachine-agent " + getAID().getName() + " terminated.");
 	}
 
 	private class sendBack extends CyclicBehaviour {

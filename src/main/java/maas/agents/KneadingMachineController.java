@@ -2,10 +2,15 @@ package maas.agents;
 
 import jade.core.Agent;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class KneadingMachineController extends Agent {
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+@SuppressWarnings("serial")
+public class KneadingMachineController extends Agent implements Serializable {
 
 	List<String> kneadingMachineGuids;
 
@@ -23,12 +28,13 @@ public class KneadingMachineController extends Agent {
 
 	@Override
 	protected void setup() {
-		System.out.println("Hello! KneadingMachineController-agent " + getAID().getName() + " is ready.");
-
+		Logger log = LogManager.getLogger(KneadingMachineController.class);
+		log.info("Hello! KneadingMachineController-agent " + getAID().getName() + " is ready.");
 	}
 
 	@Override
 	protected void takeDown() {
-		System.out.println("KneadingMachineController-agent " + getAID().getName() + " terminated.");
+		Logger log = LogManager.getLogger(KneadingMachineController.class);
+		log.info("KneadingMachineController-agent " + getAID().getName() + " terminated.");
 	}
 }

@@ -2,9 +2,9 @@ package maas.models;
 
 import java.io.Serializable;
 
+@SuppressWarnings("serial")
 public class Product implements Serializable {
 
-	private static final long serialVersionUID = 6220847939127131130L;
 	String id;
 	int dough_prep_time;
 	int resting_time;

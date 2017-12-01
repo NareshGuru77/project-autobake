@@ -3,15 +3,20 @@ package maas.agents;
 import jade.core.Agent;
 import jade.core.behaviours.CyclicBehaviour;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Delivery extends Agent {
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+@SuppressWarnings("serial")
+public class Delivery extends Agent implements Serializable{
 
 	List<String> truckGuids;
 
 	public Delivery() {
-		truckGuids = new ArrayList<String>();
+		truckGuids = new ArrayList<>();
 	}
 
 	public Delivery(List<String> guids) {
@@ -24,13 +29,14 @@ public class Delivery extends Agent {
 
 	@Override
 	protected void setup() {
-		System.out.println("Hello! Delivery-agent " + getAID().getName() + " is ready.");
-
+		Logger log = LogManager.getLogger(Delivery.class);
+		log.info("Hello! Delivery-agent " + getAID().getName() + " is ready.");
 	}
 
 	@Override
 	protected void takeDown() {
-		System.out.println("Delivery-agent " + getAID().getName() + " terminated.");
+		Logger log = LogManager.getLogger(Delivery.class);
+		log.info("Delivery-agent " + getAID().getName() + " terminated.");
 	}
 
 	private class sendBack extends CyclicBehaviour {

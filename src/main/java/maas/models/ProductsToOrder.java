@@ -1,6 +1,9 @@
 package maas.models;
 
-public class ProductsToOrder {
+import java.io.Serializable;
+
+@SuppressWarnings("serial")
+public class ProductsToOrder implements Serializable {
 	
 	String productid;
 	int quantity;

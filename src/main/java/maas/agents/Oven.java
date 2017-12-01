@@ -2,12 +2,15 @@ package maas.agents;
 
 import java.io.Serializable;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import jade.core.Agent;
 import jade.core.behaviours.*;
 
+@SuppressWarnings("serial")
 public class Oven extends Agent implements Serializable {
 
-	private static final long serialVersionUID = -6570088771410266687L;
 	String guid;
 	int cooling_rate;
 	int heating_rate;
@@ -18,13 +21,14 @@ public class Oven extends Agent implements Serializable {
 
 	@Override
 	protected void setup() {
-		System.out.println("Hello! Oven-agent " + getAID().getName() + " is ready.");
-
+		Logger log = LogManager.getLogger(Oven.class);
+		log.info("Hello! Oven-agent " + getAID().getName() + " is ready.");
 	}
 
 	@Override
 	protected void takeDown() {
-		System.out.println("Oven-agent " + getAID().getName() + " terminated.");
+		Logger log = LogManager.getLogger(Oven.class);
+		log.info("Oven-agent " + getAID().getName() + " terminated.");
 	}
 
 	private class sendBack extends CyclicBehaviour {

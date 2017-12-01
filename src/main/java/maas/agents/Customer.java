@@ -6,6 +6,9 @@ import jade.core.behaviours.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import maas.models.Location;
 import maas.models.Order;
 
@@ -21,12 +24,14 @@ public class Customer extends Agent {
 
 	@Override
 	protected void setup() {
-		System.out.println("Hello! Customer-agent " + getAID().getName() + " is ready.");
+		Logger log = LogManager.getLogger(Customer.class);
+		log.info("Hello! Customer-agent " + getAID().getName() + " is ready.");
 	}
 
 	@Override
 	protected void takeDown() {
-		System.out.println("Customer-agent " + getAID().getName() + " terminated.");
+		Logger log = LogManager.getLogger(Customer.class);
+		log.info("Customer-agent " + getAID().getName() + " terminated.");
 	}
 
 	private class orderProducts extends OneShotBehaviour {

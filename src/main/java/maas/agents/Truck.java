@@ -5,12 +5,15 @@ import maas.models.StreetNetwork;
 
 import java.io.Serializable;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import jade.core.Agent;
 import jade.core.behaviours.*;
 
+@SuppressWarnings("serial")
 public class Truck extends Agent implements Serializable {
 
-	private static final long serialVersionUID = -888212390337704863L;
 	String guid;
 	int load_capacity;
 	Location location;
@@ -32,13 +35,14 @@ public class Truck extends Agent implements Serializable {
 
 	@Override
 	protected void setup() {
-		System.out.println("Hello! Truck-agent " + getAID().getName() + " is ready.");
-
+		Logger log = LogManager.getLogger(Truck.class);
+		log.info("Hello! Truck-agent " + getAID().getName() + " is ready.");
 	}
 
 	@Override
 	protected void takeDown() {
-		System.out.println("Truck-agent " + getAID().getName() + " terminated.");
+		Logger log = LogManager.getLogger(Truck.class);
+		log.info("Truck-agent " + getAID().getName() + " terminated.");
 	}
 
 	// TODO: Implementation

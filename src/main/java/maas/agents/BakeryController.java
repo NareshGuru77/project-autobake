@@ -2,15 +2,20 @@ package maas.agents;
 
 import jade.core.Agent;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BakeryController extends Agent {
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+@SuppressWarnings("serial")
+public class BakeryController extends Agent implements Serializable{
 
 	List<String> bakeryGuids;
 	
 	public BakeryController() {
-		bakeryGuids = new ArrayList<String>();
+		bakeryGuids = new ArrayList<>();
 	}
 	
 	public BakeryController(List<String> guids) {
@@ -23,12 +28,13 @@ public class BakeryController extends Agent {
 	
 	@Override
 	protected void setup() {
-		System.out.println("Hello! BakeryController-agent " + getAID().getName() + " is ready.");
-		
+		Logger log = LogManager.getLogger(BakeryController.class);
+		log.info("Hello! BakeryController-agent " + getAID().getName() + " is ready.");
 	}
 	
 	@Override
 	protected void takeDown() {
-		System.out.println("BakeryController-agent " + getAID().getName() + " terminated.");
+		Logger log = LogManager.getLogger(BakeryController.class);
+		log.info("BakeryController-agent " + getAID().getName() + " terminated.");
 	}
 }
