@@ -1,9 +1,12 @@
 package maas.models;
 
-public class Location {
+import java.io.Serializable;
+
+@SuppressWarnings("serial")
+public class Location implements Serializable{
 	
-	int x;
-	int y;
+	private int x;
+	private int y;
 	
 	public int getX() {
 		return x;

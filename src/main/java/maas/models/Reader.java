@@ -20,11 +20,11 @@ import maas.agents.Customer;
 
 public class Reader {
 
-	Meta meta;
-	Bakery[] bakeries;
-	Customer[] customers;
-	Order[] orders;
-	StreetNetwork[] street_network;
+	private Meta meta;
+	private Bakery[] bakeries;
+	private Customer[] customers;
+	private Order[] orders;
+	private StreetNetwork[] street_network;
 
 	public Meta getMeta() {
 		return meta;
@@ -47,15 +47,12 @@ public class Reader {
 	}
 
 	public void readJsonFile(String path) {
-		InputStream stream = null;
+		Logger log = LogManager.getLogger(Reader.class);
 		
-		JsonReader reader = null;
-		
-		try {
-			stream = new FileInputStream(path);
-
-			reader = new JsonReader(new InputStreamReader(stream, "UTF-8"));
-
+		try (
+				InputStream stream = new FileInputStream(path);
+				JsonReader reader = new JsonReader(new InputStreamReader(stream, "UTF-8"));
+				){
 			Gson gson = new GsonBuilder().create();
 
 			reader.beginObject();
@@ -84,31 +81,21 @@ public class Reader {
 					break;
 				}
 			}
-			System.out.println("Successfully read json file!");
+			log.info("Successfully read json file!");
 		} catch (UnsupportedEncodingException e) {
-			Logger log = LogManager.getLogger(Reader.class);
 			log.error("Unsupported Encoding for Json file", e);
 		} catch (IOException e) {
-			Logger log = LogManager.getLogger(Reader.class);
 			log.error("Error in reading Json File", e);
-		} finally {
-			try {
-				reader.close();
-				stream.close();
-			} catch (IOException e) {
-				Logger log = LogManager.getLogger(Reader.class);
-				log.error("Error in closing Json File", e);
-			}
 		}
 	}
 
 	private void parseOrders(Gson gson, JsonReader reader) {
-		Order[] orders = new Order[meta.orders];
+		Order[] createdOrders = new Order[meta.getNumberOfOrders()];
 
 		try {
 			reader.beginArray();
 
-			for (int i = 0; i < meta.orders; ++i) {
+			for (int i = 0; i < meta.getNumberOfOrders(); ++i) {
 				reader.beginObject();
 				
 				reader.nextName();
@@ -142,7 +129,7 @@ public class Reader {
 				
 				Date delivery_date = gson.fromJson(reader, Date.class);
 				
-				orders[i] = new Order(guid, customer_id, order_date, delivery_date, list);
+				createdOrders[i] = new Order(guid, customer_id, order_date, delivery_date, list);
 				
 				reader.endObject();
 			}
@@ -152,6 +139,6 @@ public class Reader {
 			log.error("Error in processing orders from Json File", e);
 		}
 
-		this.orders = orders;
+		this.orders = createdOrders;
 	}
 }

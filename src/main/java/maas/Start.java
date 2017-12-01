@@ -9,8 +9,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.core.config.Configurator;
 
 import jade.core.Profile;
 import jade.core.ProfileImpl;
@@ -21,6 +23,8 @@ import maas.agents.*;
 
 public class Start {
     public static void main(String[] args) {
+    	Configurator.setRootLevel(Level.ALL);
+    	
     	Logger log = LogManager.getLogger(Start.class);
     	
     	Runtime runtime = Runtime.instance();
@@ -81,14 +85,14 @@ public class Start {
     			container.acceptNewAgent("Packaging" + i, new Packaging()).start();
     			
     		} catch (StaleProxyException e) {
-    			log.fatal("Wrapper is outdated", e);
+    			log.fatal("Wrapper is outdated when creating Agents of the Bakery", e);
     		}
     	}
     	
     	try {
 			container.acceptNewAgent("BakeryController", bakeryController).start();
 		} catch (StaleProxyException e) {
-			log.fatal("Wrapper is outdated", e);
+			log.fatal("Wrapper is outdated when creating the BakeryController", e);
 		}
     	
     	Customer[] customers = reader.getCustomers();
@@ -116,7 +120,7 @@ public class Start {
     		try {
 				container.acceptNewAgent(customers[i].getCustomerName(), customers[i]).start();
 			} catch (StaleProxyException e) {
-				log.fatal("Wrapper is outdated", e);
+				log.fatal("Wrapper is outdated when creating the Customers", e);
 			}
     	}
     }

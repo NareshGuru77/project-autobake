@@ -2,42 +2,63 @@ package maas.agents;
 
 import maas.models.Location;
 import maas.models.StreetNetwork;
+
+import java.io.Serializable;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import jade.core.Agent;
 import jade.core.behaviours.*;
 
-public class Truck extends Agent {
+@SuppressWarnings("serial")
+public class Truck extends Agent implements Serializable {
 
-	String guid;
-	int load_capacity;
-	Location location;
-	
+	private String guid;
+	private int load_capacity;
+	private Location location;
+
 	public String getGuid() {
 		return guid;
 	}
-	
-	//TODO: Check return type
-	protected StreetNetwork path_plan(){
-		
-		return null;		
+
+	public int getLoad_capacity() {
+		return load_capacity;
 	}
-	
-	protected void follow_path(){
-		
+
+	public Location getLocation() {
+		return location;
 	}
-	
+
+	// TODO: Implementation
+	protected StreetNetwork path_plan() {
+
+		throw new UnsupportedOperationException();
+	}
+
+	// TODO: Implementation
+	protected void follow_path() {
+		throw new UnsupportedOperationException();
+	}
+
+	@Override
 	protected void setup() {
-		System.out.println("Hello! Truck-agent " + getAID().getName() + " is ready.");
-		
+		Logger log = LogManager.getLogger(Truck.class);
+		log.info("Hello! Truck-agent " + getAID().getName() + " is ready.");
 	}
+
+	@Override
 	protected void takeDown() {
-		System.out.println("Truck-agent " + getAID().getName() + " terminated.");
+		Logger log = LogManager.getLogger(Truck.class);
+		log.info("Truck-agent " + getAID().getName() + " terminated.");
 	}
-	
-	private class truckHandleServer extends CyclicBehaviour{
+
+	// TODO: Implementation
+	private class truckHandleServer extends CyclicBehaviour {
 		public void action() {
-			
+			throw new UnsupportedOperationException();
 		}
-		
+
 	}
-	
+
 }

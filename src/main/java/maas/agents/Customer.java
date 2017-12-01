@@ -6,30 +6,37 @@ import jade.core.behaviours.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import maas.models.Location;
 import maas.models.Order;
 
 @SuppressWarnings("serial")
 public class Customer extends Agent {
 	
-	String guid;
-	String name;
-	String type;
-	Location location;
+	private String guid;
+	private String name;
+	private String type;
+	private Location location;
 
-	List<Order> orders = new ArrayList<Order>();
+	private List<Order> orders = new ArrayList<>();
 
+	@Override
 	protected void setup() {
-		System.out.println("Hello! Customer-agent " + getAID().getName() + " is ready.");
+		Logger log = LogManager.getLogger(Customer.class);
+		log.info("Hello! Customer-agent " + getAID().getName() + " is ready.");
 	}
 
+	@Override
 	protected void takeDown() {
-		System.out.println("Customer-agent " + getAID().getName() + " terminated.");
+		Logger log = LogManager.getLogger(Customer.class);
+		log.info("Customer-agent " + getAID().getName() + " terminated.");
 	}
 
 	private class orderProducts extends OneShotBehaviour {
 		public void action() {
-
+			throw new UnsupportedOperationException();
 		}
 	}
 
@@ -41,6 +48,18 @@ public class Customer extends Agent {
 		return name;
 	}
 	
+	public String getType() {
+		return type;
+	}
+
+	public Location getLocation() {
+		return location;
+	}
+
+	public List<Order> getOrders() {
+		return orders;
+	}
+
 	public void setOrders(List<Order> orders) {
 		this.orders = orders;
 	}
